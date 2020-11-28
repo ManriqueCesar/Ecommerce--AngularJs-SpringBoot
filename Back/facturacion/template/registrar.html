@@ -1,0 +1,100 @@
+<h2> {{title}}</h2>
+<hr>
+<div class="card">
+    <div class="container col-xl-10 col-md-12" style="margin: 70px; padding-bottom: 70px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="description-block border-right">
+                                    <img src="./img/hdclogo.png" height="100px" width="100px">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="description-block border-right">
+                                    <strong>
+                                        <p>HEEDCOM SOFTWARE</p>
+                                    </strong>
+                                    <p></p>
+                                    <p>Avenida 123 - Dpto 401 </p>
+                                    <p>Lima - Perú</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <strong>
+                                    <p>DATOS DEL CLIENTE</p>
+                                </strong>
+                                <div class="col-sm-10">
+                                    <ui-select ng-model="selections[$index]" ng-change="selectionChanged($index)">
+                                        <ui-select-match placeholder="Seleccionar cliente ...">{{$select.selected.nombre}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="cliente in clientes  | filter: $select.search">
+                                            <div ng-bind-html="cliente.apellido | highlight: $select.search"></div>
+                                            <small ng-bind-html="cliente.nombre | highlight: $select.search"></small>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <p>Email:</p>
+                                <p>{{email}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr style="color: red;">
+
+        <div class="form-group row">
+            <label for="descripcion" class="col-form-label col-2">Descripción</label>
+            <div class="col-4">
+                <select class="form-control" id="descripcion" ng-model="descripId">
+                    <option value="{{desc.id}}" ng-repeat="desc in descripcion">{{desc.titulo}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="apellido" class="col-form-label col-2">Observacion</label>
+            <div class="col-4">
+                <input type="text" class="form-control" ng-model="obseravacion" name="observacion"
+                    ng-model="cliente.apellido">{{observacion}}
+            </div>
+        </div>
+
+
+
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ productos.nombre}}</td>
+                    <td>{{ productos.precio}}</td>
+                    <td>1</td>
+                    <td>{{ monto}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div>
+            <div class="col-md-12">
+                <button class="btn btn-outline-primary" role="button " ng-click="saveFactura() ">Generar Boleta</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

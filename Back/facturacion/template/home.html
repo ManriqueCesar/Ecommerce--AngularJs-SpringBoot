@@ -1,0 +1,23 @@
+<h1 class="card-title">{{title}}</h1>
+<div class="my-2 text-left">
+    <!-- <button class="btn btn-rounded btn-primary" type="button">
+        <a href="#/formulario" class="btn btn-primary">Crear Cliente</a>
+    </button> -->
+</div>
+
+<div ng-hide="loading || productos.length > 0">No se encontraron resultados</div>
+<div class="row row-cols-1 row-cols-md-3" style="margin: 70px;">
+    <div class="col mb-4" ng-cloack ng-repeat="producto in productos">
+        <div class="card h-100">
+            <img src="./img/mercado.png" class="card-img-top" [alt]="heroe.nombre">
+            <div class="card-body">
+                <h5 class="card-title">{{producto.nombre}}</h5>
+                <a type="button" class="btn btn-outline-primary btn-block" href="#/producto/{{producto.id}}">Ver más</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div ng-hide="loading || productos.length > 0">No se encontraron resultados</div>

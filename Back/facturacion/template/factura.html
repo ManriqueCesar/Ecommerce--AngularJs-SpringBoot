@@ -1,0 +1,26 @@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>CLIENTE</th>
+            <th>DESCRIPCION</th>
+            <th>TOTAL</th>
+            <th>FECHA</th>
+            <th>OBSERVACION</th>
+            <th>ACCION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="factura in facturas">
+            <td>{{ factura.id}}</td>
+            <td>{{ factura.cliente.nombre}} {{factura.cliente.apellido}}</td>
+            <td>{{ factura.descripcion}}</td>
+            <td>{{ factura.total}}</td>
+            <td>{{ factura.create_at}}</td>
+            <td>{{ factura.observacion}}</td>
+            <td><a type="button" class="btn btn-success">Ver Detalle</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

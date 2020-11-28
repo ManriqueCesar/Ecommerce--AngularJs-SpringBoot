@@ -1,0 +1,43 @@
+<div class="container col-xl-6">
+    <div class="card bg-dark text-white">
+        <div class="card-header">{{title}}</div>
+        <div class="card-body">
+
+            <form>
+                <div class="form-group row">
+                    <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="nombre" ng-model="cliente.nombre">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="apellido" ng-model="cliente.apellido">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="email" class="col-form-label col-sm-2">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" name="email" ng-model="cliente.email">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary" role="button" ng-click="saveClient()" ng-if="!cliente.id">Crear</button>
+
+                        <ng-template #elseBlock>
+                            <button class="btn btn-primary" role="button" ng-click="editClient()" ng-if="cliente.id">Editar</button>
+                        </ng-template>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
