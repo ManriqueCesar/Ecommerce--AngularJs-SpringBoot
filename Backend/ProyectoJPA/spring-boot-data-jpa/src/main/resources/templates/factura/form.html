@@ -10,7 +10,7 @@
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
 				<h4 class="card-title">
-					<a class="btn btn-light btn-xs"
+					<a class="btn btn-light"
 						th:href="@{'/ver/' + ${factura.cliente.id}}"
 						th:text="'&laquo; volver'"></a>
 				</h4>
@@ -87,5 +87,6 @@
 
 	<footer th:replace="layout/layout :: footer"></footer>
 	<script th:replace="factura/js/autocomplete-productos :: javascript"></script>
+
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,10 +18,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "facturas")
@@ -42,15 +40,19 @@ public class Factura implements Serializable {
 	private Date createAt;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
 	private Cliente cliente;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "factura_id")
 	private List<ItemFactura> items;
 
-	public Factura() {
-		this.items = new ArrayList<ItemFactura>();
+	public List<ItemFactura> getItems() {
+		return items;
+	}
+
+	public void setItems(List<ItemFactura> items) {
+		this.items = items;
 	}
 
 	@PrePersist
@@ -98,16 +100,8 @@ public class Factura implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<ItemFactura> getItems() {
-		return items;
-	}
-
-	public void setItems(List<ItemFactura> items) {
-		this.items = items;
-	}
-
-	public void addItemFactura(ItemFactura item) {
-		this.items.add(item);
+	public void addItemFactura(ItemFactura items2) {
+		this.items.add(items2);
 	}
 
 	public Double getTotal() {

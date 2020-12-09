@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.bolsadeideas.springboot.app.model.ItemFacturaModelo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -22,12 +23,25 @@ public class ItemFactura implements Serializable {
 	private Long id;
 
 	private Integer cantidad;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	@JoinColumn(name="producto_id")
-	private Producto producto;
 
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "producto_id")
+	private Producto producto;
+	
+	public ItemFactura() {
+
+	}
+
+
+	public ItemFactura(ItemFacturaModelo item) {
+		this.id = item.getId();
+		this.cantidad = item.getCantidad();
+		this.producto.setId(item.getProductoId());
+	}
+
+
+	
 	public Long getId() {
 		return id;
 	}
@@ -44,6 +58,10 @@ public class ItemFactura implements Serializable {
 		this.cantidad = cantidad;
 	}
 
+	public Double calcularImporte() {
+		return cantidad.doubleValue() * producto.getPrecio();
+	}
+
 	public Producto getProducto() {
 		return producto;
 	}
@@ -52,10 +70,6 @@ public class ItemFactura implements Serializable {
 		this.producto = producto;
 	}
 
-	public Double calcularImporte() {
-		return cantidad.doubleValue() * producto.getPrecio();
-	}
-	
 	private static final long serialVersionUID = 1L;
 
 }
