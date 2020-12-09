@@ -33,5 +33,9 @@ angular.module("ClientesApp", ["ngRoute", "ngResource",'ngSanitize', 'ui.select'
                 templateUrl: "template/registrar.html",
                 controller: "LoadFacturaController"
             })
+            .when('/carrito/:id', {
+                templateUrl: "template/carrito.html",
+                controller: "CarritoController"
+            })
 
     });

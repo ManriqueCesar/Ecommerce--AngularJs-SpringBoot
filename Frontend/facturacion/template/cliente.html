@@ -4,6 +4,15 @@
         <a href="#/formulario" class="btn btn-primary">Crear Cliente</a>
     </button> -->
 </div>
-<div ng-hide="loading || clientes.length > 0">No se encontraron resultados</div>
-<div table-client=""></div>
-<div ng-show="loading || facturas.length > 0">No se encontraron resultados</div>
+<div ng-hide="loading || clientes.length > 0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                No se encontraron resultados
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div table-client=""></div>
+</div>

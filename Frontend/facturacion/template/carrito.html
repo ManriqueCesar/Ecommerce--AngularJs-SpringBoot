@@ -1,0 +1,60 @@
+<h2 class="card-title">{{title}}</h2>
+<div class="my-2 text-left">
+    <!-- <button class="btn btn-rounded btn-primary" type="button">
+        <a href="#/formulario" class="btn btn-primary">Crear Cliente</a>
+    </button> -->
+</div>
+<style>
+
+</style>
+
+<div ng-hide="loading || carritos.length > 0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                ¡Su carrito de compras está vacio!
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="col-md-8 card" style="margin-top: 15px;">
+    <div ng-hide="carritos.length == 0"> 
+        <table class="table border:none">
+            <thead style="font-size: 20px;">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th> </th>
+                    </tr>
+            </thead>
+            <tbody style="font-size: 20px;">
+                <tr ng-repeat="carrito in carritos">
+                    <td>{{carrito.nombre}}</td>
+                    <td>
+                         <a type="button" class="fa fa-plus-circle" ng-click="agregarCantidad(carrito.idProducto)"></a>
+                         {{carrito.cantidad}}
+                         <a class="fa fa-minus-circle" ng-click="restarCantidad(carrito.idProducto)"></a>
+                    </td>
+                    <td>S/ {{carrito.precio}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-4" style="margin-top: 15px;">
+    <div class="card">
+        <div class="card-header" style="font-size: large;">
+          Resumen de Compra
+        </div>
+        <div class="card-body">
+            <div class="form-grup">
+          <h5 class="card-title"style="font-size: large;" >Total</h5>
+          <p class="card-text" style="font-size: large;">S/ {{total}}</p>
+          <hr>
+        </div>
+          <a href="#/registrar/1" class="btn btn-danger">Comprar</a>
+        </div>
+      </div>
+</div>

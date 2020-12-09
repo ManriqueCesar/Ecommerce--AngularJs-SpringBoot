@@ -70,24 +70,28 @@
 
 
 
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Monto</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ productos.nombre}}</td>
-                    <td>{{ productos.precio}}</td>
-                    <td>1</td>
-                    <td>{{ monto}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div style="margin-top: 15px;">
+            <div ng-hide="productos.length == 0"> 
+                <table class="table border:none">
+                    <thead style="font-size: 20px;">
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th>Monto</th>
+                            </tr>
+                    </thead>
+                    <tbody style="font-size: 20px;">
+                        <tr ng-repeat="producto in productos">
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.cantidad}}</td>
+                            <td>S/ {{producto.precio}}</td>
+                            <td>S/ {{producto.precio * producto.cantidad}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
 
         <div>

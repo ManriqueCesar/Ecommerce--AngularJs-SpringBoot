@@ -8,3 +8,6 @@ angular.module("ClientesApp")
     .factory("ProductoResource", function($resource) {
         return $resource("http://localhost:8080/productos/:id", { id: "@id" }, { update: { method: "PUT" } });
     })
+    .factory("CarritoResource", function($resource) {
+        return $resource("http://localhost:8080/carrito/detalle/:id", { id: "@id" }, { update: { method: "PUT" , isArray:true } });
+    })
