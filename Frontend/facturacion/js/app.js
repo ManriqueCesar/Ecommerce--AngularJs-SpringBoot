@@ -17,7 +17,7 @@ angular.module("ClientesApp", ["ngRoute", "ngResource",'ngSanitize', 'ui.select'
                 templateUrl: "template/formulario.html",
                 controller: "LoadClientController"
             })
-            .when('/factura', {
+            .when('/facturas', {
                 templateUrl: "template/factura.html",
                 controller: "FacturaController"
             })
